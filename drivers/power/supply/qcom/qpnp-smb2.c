@@ -202,11 +202,7 @@ extern void asus_smblib_stay_awake(struct smb_charger *chg);
 extern void asus_smblib_relax(struct smb_charger *chg);
 /* Huaqin add for ZQL1650-68 systme suspend 1 min run sw jeita by fangaijun at 2018/02/06 end */
 /* Huaqin modify for ZQL1650-647 add otg debug info by diganyun at 2018/03/16 start*/
-#ifdef HQ_BUILD_FACTORY
 static int __debug_mask = 0x10;
-#else
-static int __debug_mask;
-#endif
 #endif /* CONFIG_MACH_ASUS_SDM660 */
 
 static int __weak_chg_icl_ua = 500000;

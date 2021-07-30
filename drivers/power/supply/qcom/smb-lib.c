@@ -3918,7 +3918,7 @@ void asus_chg_flow_work(struct work_struct *work)
 	case FLOAT_CHARGER_BIT:
 		printk("asus_chg_flow_work enter FLOAT_CHARGER_BIT\n");
 /* Huaqin add for ZQL1650-1287 factory version remove before BC1.2 500mA before adapter id 1000mA by fangaijun at 2018/5/8 start */
-#ifndef HQ_BUILD_FACTORY
+#ifndef CONFIG_MACH_ASUS_SDM660
 /* Huaqin add for ZQL1650-71 before BC1.2 500mA before adapter id 1000mA by fangaijun at 2018/4/4 start */
 		rc = smblib_read(smbchg_dev, USBIN_CURRENT_LIMIT_CFG_REG, &USBIN_1_cc);   //reg=1370
 		if (rc < 0)
@@ -3945,7 +3945,7 @@ void asus_chg_flow_work(struct work_struct *work)
 		if (rc < 0)
 			printk("%s: Failed to set USBIN_CURRENT_LIMIT\n", __func__);
 /* Huaqin add for ZQL1650-1287 factory version remove before BC1.2 500mA before adapter id 1000mA by fangaijun at 2018/5/8 start */
-#ifndef HQ_BUILD_FACTORY
+#ifndef CONFIG_MACH_ASUS_SDM660
 /* Huaqin modify for ZQL1650 modify CDP charging current by fangaijun at 2018/04/18 start*/
 		rc = smblib_read(smbchg_dev, USBIN_CURRENT_LIMIT_CFG_REG, &USBIN_1_cc);   //reg=1370
 		if (rc < 0)
@@ -4036,7 +4036,7 @@ void asus_insertion_initial_settings(struct smb_charger *chg)
 {
 	int rc;
 /* Huaqin add for ZQL1650-1287 factory version remove before BC1.2 500mA before adapter id 1000mA by fangaijun at 2018/5/8 start */
-#ifndef HQ_BUILD_FACTORY
+#ifndef CONFIG_MACH_ASUS_SDM660
 /* Huaqin add for ZQL1650-71 before BC1.2 500mA before adapter id 1000mA by fangaijun at 2018/4/4 start */
 	u8 USBIN_cc;
 /* Huaqin add for ZQL1650-71 before BC1.2 500mA before adapter id 1000mA by fangaijun at 2018/4/4 end */
@@ -4111,7 +4111,7 @@ void asus_insertion_initial_settings(struct smb_charger *chg)
 		dev_err(chg->dev, "Couldn't set default USBIN_LOAD_CFG_REG rc=%d\n", rc);
 	}
 /* Huaqin add for ZQL1650-1287 factory version remove before BC1.2 500mA before adapter id 1000mA by fangaijun at 2018/5/8 start */
-#ifndef HQ_BUILD_FACTORY
+#ifndef CONFIG_MACH_ASUS_SDM660
 /* Huaqin add for ZQL1650-71 before BC1.2 500mA before adapter id 1000mA by fangaijun at 2018/4/4 start */	                                                                                                                                   //reg=1370 bit7-bit0
 	rc = smblib_read(chg, USBIN_CURRENT_LIMIT_CFG_REG, &USBIN_cc);   //reg=1370    usb in current
 	if (rc < 0)
